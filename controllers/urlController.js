@@ -1,7 +1,7 @@
 const ShortUrl = require('../models/shortUrl')
 
 const index = async (req, res) => {
-    const shortUrls = await ShortUrl.find().sort({ createdAt: -1 })
+    const shortUrls = await ShortUrl.find()
     res.json({ shortUrls })
 }
 
