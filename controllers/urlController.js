@@ -6,12 +6,13 @@ const index = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    if(await ShortUrl.findOne({full: req.body.fullUrl})){
-        res.json({ alert: 'Already Exists'})
-    } else {
+    try {
         await ShortUrl.create({ full: req.body.fullUrl })
-        res.json({ redirect: '/', alert: ''})
-    } 
+        res.json({ redirect: '/' })
+
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 const redirect = async (req, res) => {
